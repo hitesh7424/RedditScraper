@@ -1,8 +1,10 @@
 # Reddit Scraper
 
-## Main File: 
+## Main File:
+
 ```jsx
 reditscrap.sh
+
 ```
 ## Packages used:
 > 
