@@ -86,7 +86,7 @@ help="usage: bash $0 subRedit limit(default=10)"
 [ -z "$limit" ] && echo taking limit as 20 && limit=10
 	# sleep(3)
 
-# rimg $subRedit $limit
-# rvid $subRedit $limit
+rimg $subRedit $limit
+rvid $subRedit $limit
 
 echo done!
