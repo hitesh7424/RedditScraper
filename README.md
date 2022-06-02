@@ -1,7 +1,9 @@
 # Reddit Scraper
 
-## Main File: reditscrap.sh
-
+## Main File: 
+```jsx
+reditscrap.sh
+```
 ## Packages used:
 > 
 * curl
