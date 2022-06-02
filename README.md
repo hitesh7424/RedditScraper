@@ -3,12 +3,17 @@
 ##Main File: reditscrap.sh
 
 ##Packages used:
+> 
 * curl
 * wget
 * jq
 * grep
 * sort
-* youtube-dl (pip install youtube-dl)
+* youtube-dl (_pip install youtube-dl_)
 
-How to use:> Install required packages then run the script with bash 
+##How to use: 
+> 
+* Install required packages
+* Run the script with bash
 
+![image](scrapper.png)
