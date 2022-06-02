@@ -1,20 +1,27 @@
 #!/bin/bash
 
-rm -rf imgs 3> /dev/null
-mkdir imgs 3> /dev/null
-
+#variables
 subRedit="$1"
-
 limit=$2
 
+#making folder for videos and images
+[ -z imgs/ ] && echo Making Directory && mkdir imgs
 
-#getting json data
-curl -H "User-agent: 'your bot 0.1'" "https://www.reddit.com/r/$subRedit/hot.json?limit=$limit" > tmp.json
+help="usage: bash $0 subRedit limit(default=10)"
 
-# Create a list of images
+[ -z "$subRedit" ] && echo "no SubReddit chosen" && echo $help && exit 1
+
+[ -z "$limit" ] && echo taking limit as 20 && limit=10
+	# sleep(3)
+
+#getting json data & Create a list of images
+curl -H "User-agent: 'your bot 0.1'" "https://www.reddit.com/r/$subRedit/hot.json?limit=$limit" > tmp.json 2> /dev/null 3> /dev/null
 imgs=$(jq '.' < "tmp.json" | grep url_overridden_by_dest | grep -Eo "http(s|)://.*(jpg|png)\b" | sort -u)
 
 rm tmp.json
+
+# If there are no images, exit
+[ -z "$imgs" ] && echo "Redyt" "sadly, there are no images for subreddit $subreddit, please try again later!" && return 0
 
 a=1
 for i in $imgs;
@@ -23,16 +30,15 @@ do
 	a=$((a+1));
 done
 
-# If there are no images, exit
-[ -z "$imgs" ] && echo "Redyt" "sadly, there are no images for subreddit $subreddit, please try again later!" && exit 1
 
+
+echo && echo press enter
 read i
 
-dir="imgs"
 # Download images to $cachedir
 for img in $imgs; do
-	if [ ! -e "$dir/${img##*/}" ]; then
-		wget -P "$dir" $img
+	if [ ! -e "imgs/${img##*/}" ]; then
+		wget -P "imgs" $img
 	fi
 done
 
