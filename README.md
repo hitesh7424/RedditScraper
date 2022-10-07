@@ -13,7 +13,7 @@ reditscrap.sh
 * jq
 * grep
 * sort
-* youtube-dl (_pip install youtube-dl_)
+* yt-dlp (_pip install yt-dlp_)
 
 ## How to use: 
 > 
