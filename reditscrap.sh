@@ -31,7 +31,7 @@ rvid()
 	read i
 
 	echo Downloading Videos ...
-	youtube-dl $vids -o vid/ | awk 'NR==1' | awk '{ print $1 " " $2 " " $3 }'
+	yt-dlp $vids -o vid/ | awk 'NR==1' | awk '{ print $1 " " $2 " " $3 }'
 
 }
 
